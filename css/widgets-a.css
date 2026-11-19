@@ -1,0 +1,654 @@
+/* ==========================================================
+   Group A Lesson Widgets (1–6)
+   Prefixes: .ap- (action-potential), .sum- (summation),
+             .eg- (electrode-game), .imp- (impedance),
+             .bw- (brain-waves), .fl- (filter-lab)
+   ========================================================== */
+
+/* Shared layout helpers for Group A widgets */
+.wa-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.wa-panel {
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: var(--paper);
+  padding: 14px 16px;
+}
+
+.wa-panel.card-bg {
+  background: var(--card);
+}
+
+.wa-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.wa-title {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 0.96rem;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wa-title svg {
+  width: 18px;
+  height: 18px;
+  color: var(--coral);
+}
+
+.wa-controls {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  align-items: end;
+}
+
+.wa-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wa-metric {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--f-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--ink);
+  background: var(--card);
+}
+
+.wa-metric b {
+  color: var(--coral);
+}
+
+.wa-metric.teal b {
+  color: var(--teal);
+}
+
+/* ==========================================================
+   1. action-potential (.ap-)
+   ========================================================== */
+.ap-stage {
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: #FFFEFB;
+  padding: 12px 14px 8px;
+  position: relative;
+}
+
+.ap-svg {
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  overflow: visible;
+}
+
+.ap-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1.5px dashed var(--line);
+  font-size: 0.84rem;
+}
+
+.ap-presets {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.ap-trace-wrap {
+  position: relative;
+}
+
+.ap-canvas {
+  width: 100%;
+  height: 220px;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: #FFFEFB;
+}
+
+.ap-status-pill {
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 0.84rem;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--ink);
+  background: var(--paper-2);
+}
+
+.ap-status-pill.fire {
+  background: var(--coral-soft);
+  color: var(--ink);
+}
+
+.ap-status-pill.sub {
+  background: var(--mustard-soft);
+  color: var(--ink);
+}
+
+/* ==========================================================
+   2. summation (.sum-)
+   ========================================================== */
+.sum-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1.35fr 1fr;
+}
+
+@media (max-width: 720px) {
+  .sum-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sum-cortex-canvas {
+  width: 100%;
+  height: 220px;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: #FFFEFB;
+}
+
+.sum-trace-canvas {
+  width: 100%;
+  height: 190px;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: #FFFEFB;
+}
+
+.sum-layers-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.sum-layers-svg {
+  width: 100%;
+  height: auto;
+  max-height: 210px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-sm);
+  background: #FFFEFB;
+}
+
+.sum-readout-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================
+   3. electrode-game (.eg-)
+   ========================================================== */
+.eg-layout {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(250px, 310px) 1fr;
+  align-items: start;
+}
+
+@media (max-width: 740px) {
+  .eg-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eg-head-box {
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: #FFFEFB;
+  padding: 12px;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.eg-head-box .head2d {
+  width: 100%;
+  max-width: 270px;
+  height: auto;
+}
+
+.eg-head-box .el circle {
+  transition: transform 0.15s, fill 0.15s, r 0.15s;
+}
+
+.eg-head-box .el:hover circle,
+.eg-head-box .el:focus-visible circle {
+  fill: var(--mustard-soft);
+  stroke-width: 2.8px;
+}
+
+.eg-target-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: var(--mustard-soft);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.eg-target-code {
+  font-family: var(--f-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--card);
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-sm);
+  padding: 2px 14px;
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.eg-feedback {
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: var(--card);
+  padding: 12px 14px;
+  font-size: 0.92rem;
+}
+
+.eg-feedback.good {
+  background: var(--teal-soft);
+}
+
+.eg-feedback.bad {
+  background: var(--coral-soft);
+}
+
+.eg-hint-grid {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  font-size: 0.83rem;
+}
+
+.eg-hint-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  background: var(--card);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-sm);
+  padding: 5px 9px;
+}
+
+.eg-hint-item b {
+  font-family: var(--f-mono);
+  color: var(--coral);
+  min-width: 24px;
+}
+
+.eg-arc-box {
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: #FFFEFB;
+  padding: 10px 14px;
+}
+
+.eg-arc-svg {
+  width: 100%;
+  height: auto;
+  max-height: 155px;
+}
+
+.eg-end-card {
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: var(--mustard-soft);
+  padding: 18px;
+  text-align: center;
+  box-shadow: var(--shadow-hard-sm);
+}
+
+/* ==========================================================
+   4. impedance (.imp-)
+   ========================================================== */
+.imp-type-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+}
+
+.imp-type-btn {
+  text-align: left;
+  cursor: pointer;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: var(--card);
+  padding: 10px 12px;
+  transition: transform 0.12s, background 0.15s, box-shadow 0.12s;
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.imp-type-btn:hover {
+  background: var(--paper-2);
+}
+
+.imp-type-btn[aria-pressed="true"] {
+  background: var(--mustard-soft);
+  box-shadow: var(--shadow-hard);
+  transform: translate(-1px, -1px);
+}
+
+.imp-type-btn h4 {
+  margin: 0 0 3px;
+  font-size: 0.94rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.imp-type-btn p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.imp-meter-wrap {
+  display: grid;
+  gap: 8px;
+}
+
+.imp-meter-bar {
+  height: 16px;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-pill);
+  background: linear-gradient(
+    90deg,
+    var(--teal) 0%,
+    var(--teal) 15%,
+    var(--mustard) 15%,
+    var(--mustard) 38%,
+    var(--coral) 38%,
+    var(--coral) 100%
+  );
+  position: relative;
+}
+
+.imp-meter-needle {
+  position: absolute;
+  top: -5px;
+  width: 10px;
+  height: 22px;
+  background: var(--card);
+  border: var(--bw) solid var(--ink);
+  border-radius: 4px;
+  transform: translateX(-50%);
+  box-shadow: 1px 1px 0 var(--ink);
+  transition: left 0.12s;
+}
+
+.imp-contact-row {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+}
+
+@media (max-width: 680px) {
+  .imp-contact-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.imp-contact-svg {
+  width: 100%;
+  max-width: 210px;
+  height: auto;
+  margin: 0 auto;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-sm);
+  background: #FFFEFB;
+}
+
+.imp-alias-canvas {
+  width: 100%;
+  height: 220px;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: #FFFEFB;
+}
+
+/* ==========================================================
+   5. brain-waves (.bw-)
+   ========================================================== */
+.bw-states {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.bw-state-card {
+  text-align: left;
+  cursor: pointer;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: var(--card);
+  padding: 10px 12px;
+  box-shadow: var(--shadow-hard-sm);
+  transition: transform 0.12s, background 0.15s, box-shadow 0.12s;
+  display: grid;
+  gap: 3px;
+}
+
+.bw-state-card:hover {
+  background: var(--paper-2);
+}
+
+.bw-state-card[aria-pressed="true"] {
+  background: var(--mustard-soft);
+  box-shadow: var(--shadow-hard);
+  transform: translate(-1px, -1px);
+}
+
+.bw-state-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.bw-band-tag {
+  font-family: var(--f-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 6px;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.bw-state-title {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.bw-state-sub {
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  line-height: 1.35;
+}
+
+.bw-main-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1.35fr 1fr;
+}
+
+@media (max-width: 740px) {
+  .bw-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bw-bars {
+  display: grid;
+  gap: 8px;
+}
+
+.bw-bar-row {
+  display: grid;
+  grid-template-columns: 108px 1fr 52px;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+}
+
+.bw-bar-label {
+  font-family: var(--f-head);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.bw-bar-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  flex: none;
+}
+
+.bw-bar-track {
+  height: 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-pill);
+  background: var(--card);
+  overflow: hidden;
+}
+
+.bw-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-right: 1.5px solid var(--ink);
+  transition: width 0.14s ease-out;
+}
+
+.bw-bar-val {
+  font-family: var(--f-mono);
+  font-size: 0.76rem;
+  text-align: right;
+}
+
+.bw-mixer-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+/* ==========================================================
+   6. filter-lab (.fl-)
+   ========================================================== */
+.fl-canvases {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 760px) {
+  .fl-canvases {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fl-canvas {
+  width: 100%;
+  height: 215px;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: #FFFEFB;
+}
+
+.fl-missions {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.fl-mission {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--r-md);
+  background: var(--card);
+  padding: 9px 12px;
+  font-family: var(--f-head);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.fl-mission.done {
+  background: var(--teal-soft);
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.fl-mission-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  border: 1.8px solid var(--ink);
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.fl-mission.done .fl-mission-box {
+  background: var(--teal);
+  color: #fff;
+}
+
+.fl-mission-box svg {
+  width: 16px;
+  height: 16px;
+}
+
+.fl-mission-detail {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--ink-2);
+}

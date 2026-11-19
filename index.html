@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NeuroLAB — เรียนรู้ BCI &amp; คลื่นสมอง EEG แบบ Interactive ตั้งแต่ศูนย์</title>
+  <meta name="description" content="สมุดแล็บออนไลน์สำหรับเรียน Brain-Computer Interface (BCI) และคลื่นไฟฟ้าสมอง (EEG) พร้อมสมอง 3D หมวกอิเล็กโทรด 10-20 บทเรียน 12 ด่าน และเครื่องจำลองสัญญาณสด">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/widgets-a.css">
+  <link rel="stylesheet" href="./css/widgets-b.css">
+  <link rel="stylesheet" href="./css/pages.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a href="#app-main" class="skip" id="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a href="#/" class="logo" aria-label="NeuroLAB หน้าแรก">
+        <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
+          <g stroke="#1F2A44" stroke-width="6" stroke-linecap="round" fill="none">
+            <path d="M40 40 28 24"/><path d="M60 30V14"/><path d="M80 40l12-14"/><path d="M32 64 16 68"/>
+          </g>
+          <circle cx="60" cy="64" r="29" fill="#FF6B4A" stroke="#1F2A44" stroke-width="5"/>
+          <circle cx="50" cy="59" r="4.5" fill="#1F2A44"/>
+          <circle cx="70" cy="59" r="4.5" fill="#1F2A44"/>
+          <path d="M51 72c4 5 14 5 18 0" stroke="#1F2A44" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span>Neuro<b>LAB</b></span>
+      </a>
+
+      <nav class="nav" id="main-nav" aria-label="เมนูหลัก">
+        <a href="#/" data-page="home" data-i18n-th="แผนที่ 12 ด่าน" data-i18n-en="12-Stage Map">แผนที่ 12 ด่าน</a>
+        <a href="#/explore?focus=Brain" data-page="explore" data-i18n-th="สมอง 3D &amp; หมวก 10-20" data-i18n-en="3D Brain &amp; 10-20 Cap">สมอง 3D &amp; หมวก 10-20</a>
+        <a href="#/lesson/1" data-page="lesson" data-i18n-th="บทเรียน" data-i18n-en="Lessons">บทเรียน</a>
+        <a href="#/playground" data-page="playground" data-i18n-th="EEG Simulator" data-i18n-en="EEG Simulator">EEG Simulator</a>
+        <a href="#/glossary" data-page="glossary" data-i18n-th="คลังคำศัพท์" data-i18n-en="Glossary">คลังคำศัพท์</a>
+      </nav>
+
+      <div class="stats">
+        <div class="stat streak" title="จำนวนวันที่เข้ามาเรียนต่อเนื่อง (Daily Streak)">
+          <svg viewBox="0 0 24 24" fill="#FF6B4A" stroke="#1F2A44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21c-4 0-6.5-2.7-6.5-6.2 0-3.6 3-5.6 3.6-9.3 2.3 1.4 3.4 3.4 3.4 5.3 1-.6 1.8-1.7 2-3 2.3 1.9 4 4.4 4 7 0 3.5-2.5 6.2-6.5 6.2Z"/>
+          </svg>
+          <span id="stat-streak-val">1</span>
+          <span class="lbl" id="stat-streak-lbl">วัน</span>
+        </div>
+        <div class="stat xp" title="คะแนนประสบการณ์สะสม (XP)">
+          <svg viewBox="0 0 24 24" fill="#F2B632" stroke="#1F2A44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m12 3 2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8L12 3Z"/>
+          </svg>
+          <span id="stat-xp-val">0 XP</span>
+        </div>
+        <button type="button" class="btn sm" id="lang-toggle-btn" title="สลับภาษา ไทย / English" aria-label="Switch Language TH / EN" style="font-family:var(--f-mono);padding:4px 10px;border-radius:var(--r-pill)">
+          <span id="lang-toggle-label">TH | EN</span>
+        </button>
+        <button type="button" class="btn sm icon menu-btn" id="menu-btn" aria-label="เปิดเมนู">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="app-main"></main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <strong id="footer-title">NeuroLAB — สมุดแล็บออนไลน์เพื่อการเรียนรู้ BCI &amp; EEG</strong>
+        <p class="small muted" id="footer-desc" style="margin:4px 0 0">
+          ออกแบบเพื่อให้นักเรียนและนักศึกษาไทยเริ่มต้นเรียนรู้ Brain-Computer Interface ตั้งแต่พื้นฐานประสาทวิทยาศาสตร์จนถึง MNE-Python
+        </p>
+      </div>
+      <div class="widget-row">
+        <a href="#/explore?focus=Brain" class="btn sm ghost">3D Brain</a>
+        <a href="#/playground" class="btn sm ghost">EEG Simulator</a>
+        <a href="#/glossary" class="btn sm ghost" id="footer-glossary-link">คลังคำศัพท์</a>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="./dist/brain.model.js"></script>
+  <script defer src="./dist/app.bundle.js"></script>
+</body>
+</html>

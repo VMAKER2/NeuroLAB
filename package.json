@@ -1,0 +1,10 @@
+{
+  "name": "neurolab-bci-eeg",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive Thai BCI & EEG learning web application with 3D Brain Explorer, 10-20 EEG Cap, 12 interactive stages, and real-time EEG Simulator.",
+  "scripts": {
+    "dev": "python -m http.server 5173 --bind 127.0.0.1",
+    "start": "python -m http.server 5173 --bind 127.0.0.1"
+  }
+}

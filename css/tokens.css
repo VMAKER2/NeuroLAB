@@ -1,0 +1,76 @@
+/* ==========================================================
+   NeuroLAB design tokens
+   Every colour carries a meaning that is reused site-wide:
+   frontal = coral, parietal = mustard, temporal = teal,
+   occipital = lilac, cerebellum = rose, brainstem = slate.
+   ========================================================== */
+:root {
+  /* base */
+  --paper: #FBF7F0;
+  --paper-2: #F4EDE1;
+  --paper-3: #EDE3D3;
+  --card: #FFFDF9;
+  --ink: #1F2A44;
+  --ink-2: #47506A;
+  --ink-3: #7A8197;
+  --line: #E7DFD2;
+  --line-strong: #1F2A44;
+
+  /* accents */
+  --coral: #FF6B4A;
+  --coral-soft: #FFE1D8;
+  --teal: #1FA39A;
+  --teal-soft: #D3F0EC;
+  --mustard: #F2B632;
+  --mustard-soft: #FCEFC8;
+  --lilac: #9C8FD6;
+  --lilac-soft: #E7E3F6;
+  --rose: #E58FB0;
+  --rose-soft: #F9E1EA;
+  --slate: #7F9CC2;
+  --slate-soft: #E1E9F4;
+  --leaf: #5DB37E;
+  --leaf-soft: #DDF1E3;
+
+  /* brain region colours (match js/data/regions.js) */
+  --c-frontal: #FF7A59;
+  --c-parietal: #F2B632;
+  --c-temporal: #1FA39A;
+  --c-occipital: #9C8FD6;
+  --c-cerebellum: #E58FB0;
+  --c-brainstem: #7F9CC2;
+  --c-limbic: #5DB37E;
+  --c-thalamus: #F39A45;
+
+  /* type */
+  --f-head: "Anuphan", "IBM Plex Sans Thai", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans Thai", "Anuphan", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+
+  /* shape */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-pill: 999px;
+  --bw: 2px;
+  --shadow-hard: 4px 4px 0 var(--ink);
+  --shadow-hard-sm: 2px 2px 0 var(--ink);
+  --shadow-soft: 0 10px 30px -12px rgba(31, 42, 68, .25);
+
+  /* motion */
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+
+  --topbar-h: 64px;
+  --maxw: 1200px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --ease-spring: linear; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

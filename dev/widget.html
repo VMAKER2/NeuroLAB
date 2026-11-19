@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Widget harness — NeuroLAB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/widgets-a.css">
+<link rel="stylesheet" href="../css/widgets-b.css">
+<link rel="stylesheet" href="../css/pages.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
+<style>
+  body { padding: 30px 0; }
+  .harness { width: min(100% - 40px, 900px); margin: 0 auto; display: grid; gap: 16px; }
+</style>
+</head>
+<body>
+<div class="harness">
+  <p class="small muted">Harness: <code>dev/widget.html?w=&lt;widget-file-name&gt;</code></p>
+  <section class="widget">
+    <header class="widget-head"><h3 id="title">widget</h3><span class="chip">ลองเล่น</span></header>
+    <div class="widget-body" id="root"></div>
+  </section>
+  <div id="buddy"></div>
+  <pre id="log" class="readout small"></pre>
+</div>
+<script type="module">
+  import { buddy } from '../js/ui/mascot.js';
+  const name = new URLSearchParams(location.search).get('w') || 'action-potential';
+  document.getElementById('title').textContent = name;
+  const log = (m) => (document.getElementById('log').textContent += m + '\n');
+  const b = buddy('สวัสดี! ลองเล่นดูนะ', 'idle');
+  document.getElementById('buddy').append(b.el);
+  const ctx = {
+    lessonId: 'harness',
+    say: (html, mood = 'idle') => b.say(html, mood, mood === 'happy' ? 'cheer' : mood === 'oops' ? 'shake' : 'bob'),
+    discover: (key, msg) => { log('discover: ' + key); b.say(msg, 'happy', 'cheer'); },
+  };
+  window.addEventListener('error', (e) => log('ERROR: ' + e.message));
+  try {
+    const mod = await import(`../js/widgets/${name}.js`);
+    const cleanup = mod.default(document.getElementById('root'), ctx);
+    log('mounted OK, cleanup is ' + typeof cleanup);
+  } catch (e) { log('ERROR: ' + e.message + '\n' + e.stack); console.error(e); }
+</script>
+</body>
+</html>

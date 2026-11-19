@@ -1,0 +1,706 @@
+/* ==========================================================
+   Page Layouts: Home, 3D Brain Explorer, Lesson, Glossary, Footer
+   ========================================================== */
+
+.page {
+  padding: 28px 0 60px;
+}
+.page-head {
+  margin-bottom: 24px;
+}
+.page-head .lead {
+  font-size: 1.08rem;
+  color: var(--ink-2);
+  max-width: 72ch;
+}
+
+/* ---------- HOME PAGE ---------- */
+.home-page {
+  padding: 28px 0 64px;
+  display: grid;
+  gap: 52px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+.hero-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hero-lead {
+  font-size: 1.08rem;
+  color: var(--ink-2);
+  margin: 0;
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 6px 0 8px;
+}
+
+.hero-stage-card {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: linear-gradient(180deg, #FFFDF9 0%, #F8F1E4 100%);
+}
+.hero-stage-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hero-stage-top .chip {
+  margin-right: auto;
+}
+.hero-brain-viewport {
+  width: 100%;
+  height: 310px;
+  border: 2px solid var(--ink);
+  border-radius: var(--r-md);
+  background: radial-gradient(circle at 50% 42%, #FFFDF9 0%, #F4EDE1 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero-lobe-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.hero-lobe-pills button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.hero-wave-box {
+  border-top: 1.5px dashed var(--ink-3);
+  padding-top: 8px;
+  display: grid;
+  gap: 6px;
+}
+.hero-wave-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hero-wave-canvas {
+  width: 100%;
+  height: 62px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-sm);
+  background: #FFFEFB;
+}
+
+/* Asymmetric Bento Tools Showcase */
+.home-tools-bento {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 18px;
+}
+.tool-bento-card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  transition: transform .15s var(--ease-out), box-shadow .15s var(--ease-out);
+}
+.tool-bento-card:hover {
+  color: var(--ink);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.tool-bento-card.main-bento {
+  grid-row: span 2;
+  background: var(--coral-soft);
+  justify-content: space-between;
+}
+.tool-bento-card .btn {
+  margin-top: auto;
+}
+
+/* Learning Map (12 Stages) */
+.learning-map-section {
+  display: grid;
+  gap: 28px;
+}
+.map-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.map-progress-box {
+  min-width: 260px;
+  flex: 0 1 320px;
+}
+.map-progress-nums {
+  display: flex;
+  justify-content: space-between;
+  font-size: .9rem;
+  margin-bottom: 6px;
+}
+.progress-bar {
+  height: 14px;
+  border: 2px solid var(--ink);
+  border-radius: var(--r-pill);
+  background: var(--paper-2);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--teal);
+  transition: width .4s var(--ease-out);
+}
+
+.phase-block {
+  display: grid;
+  gap: 14px;
+}
+.phase-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.phase-title-row h3 {
+  margin: 0;
+}
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  gap: 16px;
+}
+.stage-card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 20px;
+  position: relative;
+  transition: transform .14s var(--ease-out), box-shadow .14s var(--ease-out);
+}
+.stage-card:hover {
+  color: var(--ink);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.stage-card.is-done {
+  background: #F6FBF8;
+}
+.stage-card.is-next {
+  border-color: var(--coral);
+  box-shadow: 4px 4px 0 var(--coral);
+}
+.stage-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.stage-num {
+  font-family: var(--f-mono);
+  font-size: .78rem;
+  font-weight: 700;
+  color: #fff;
+  padding: 2px 9px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--ink);
+}
+.stage-stamp {
+  margin-left: auto;
+  font-family: var(--f-head);
+  font-size: .76rem;
+  font-weight: 700;
+  color: var(--teal);
+  border: 2px solid var(--teal);
+  border-radius: 6px;
+  padding: 1px 7px;
+  transform: rotate(-4deg);
+}
+.next-pill {
+  margin-left: auto;
+  background: var(--coral-soft);
+  animation: pulse-pill 2s infinite;
+}
+@keyframes pulse-pill {
+  50% { transform: scale(1.06); }
+}
+.stage-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 2px;
+}
+.stage-card-foot {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1.5px dashed var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.stage-go svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------- 3D BRAIN EXPLORER PAGE ---------- */
+.explore-shell {
+  width: min(100% - 28px, 1380px);
+  margin: 18px auto 40px;
+  display: grid;
+  grid-template-columns: 280px 1fr 360px;
+  gap: 16px;
+  align-items: start;
+}
+.explore-tree {
+  padding: 16px;
+  max-height: calc(100vh - 100px);
+  position: sticky;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tree-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.explore-tree h2 {
+  font-size: 1.25rem;
+  margin: 2px 0 8px;
+}
+.tree-list {
+  overflow-y: auto;
+  display: grid;
+  gap: 3px;
+  padding-right: 4px;
+}
+.tree-item {
+  display: flex;
+  align-items: center;
+  border-radius: var(--r-sm);
+  border: 1.5px solid transparent;
+}
+.tree-item.depth-2 {
+  padding-left: 16px;
+}
+.tree-item:hover {
+  background: var(--paper-2);
+}
+.tree-item.active {
+  background: var(--mustard-soft);
+  border-color: var(--ink);
+}
+.tree-caret {
+  border: 0;
+  background: transparent;
+  padding: 4px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.tree-caret svg {
+  width: 15px;
+  height: 15px;
+}
+.tree-caret-spacer {
+  width: 23px;
+  flex: none;
+}
+.tree-select-btn {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px 6px 2px;
+  width: 100%;
+}
+.tree-select-btn .dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  flex: none;
+}
+.tree-names {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.tree-names strong {
+  font-size: .9rem;
+}
+
+.explore-stage {
+  padding: 14px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 620px;
+  background: radial-gradient(circle at 50% 45%, #FFFDF9 0%, #F4EDE1 100%);
+}
+.explore-hud-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.explore-crumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.explore-hud-actions {
+  display: flex;
+  gap: 6px;
+}
+.explore-viewport {
+  height: 520px;
+  border: 2px solid var(--ink);
+  border-radius: var(--r-md);
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 42%, #FFFDF9 0%, #EFE6D5 100%);
+}
+.explore-toolbar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Intro modal overlay inside center stage */
+.explore-intro-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 42, 68, 0.35);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 20;
+  border-radius: var(--r-lg);
+}
+.explore-intro-card {
+  max-width: 520px;
+  width: 100%;
+  background: var(--card);
+}
+.intro-steps {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+.intro-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.explore-info {
+  padding: 20px;
+  display: grid;
+  gap: 16px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  position: sticky;
+  top: 80px;
+}
+.info-summary {
+  font-size: .96rem;
+  color: var(--ink-2);
+  margin: 0;
+}
+.info-eeg-box {
+  padding: 14px 16px;
+}
+.info-eeg-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-head);
+  margin-bottom: 6px;
+}
+.info-eeg-title svg {
+  width: 20px;
+  height: 20px;
+}
+.electrode-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+.el-chip.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+.info-sections {
+  display: grid;
+  gap: 12px;
+}
+.info-sec h4 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.info-sec h4 svg {
+  width: 18px;
+  height: 18px;
+  color: var(--coral);
+}
+.info-sec p {
+  margin: 0;
+  color: var(--ink-2);
+}
+.info-lesson-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+/* ---------- LESSON PAGE ---------- */
+.lesson-page {
+  padding: 22px 0 64px;
+  display: grid;
+  gap: 24px;
+  max-width: 960px;
+}
+.lesson-page > * {
+  min-width: 0;
+}
+.lesson-stage-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: var(--r-md);
+  padding: 8px 12px;
+  box-shadow: var(--shadow-hard-sm);
+}
+.stage-pills {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.stage-pill {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  display: grid;
+  place-items: center;
+  font-family: var(--f-mono);
+  font-size: .8rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--paper);
+  color: var(--ink);
+}
+.stage-pill.done {
+  background: var(--teal-soft);
+}
+.stage-pill.active {
+  background: var(--coral);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.lesson-article {
+  padding: 28px 32px;
+}
+.lesson-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.lesson-sub {
+  font-size: 1.12rem;
+  color: var(--ink-2);
+  margin-bottom: 18px;
+}
+.lesson-prose ul, .lesson-prose ol {
+  padding-left: 22px;
+  margin: 0 0 1.1em;
+}
+.lesson-prose li {
+  margin-bottom: .45em;
+}
+.lesson-takeaways {
+  margin-top: 18px;
+  background: var(--paper-2);
+  border: 2px solid var(--ink);
+  border-radius: var(--r-md);
+  padding: 16px 20px;
+}
+.lesson-takeaways h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+.lesson-takeaways h3 svg {
+  width: 20px;
+  height: 20px;
+  color: var(--mustard);
+}
+.lesson-takeaways ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.lesson-quiz-section {
+  display: grid;
+  gap: 18px;
+}
+.quiz-complete-banner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: var(--mustard-soft);
+  border: 2px solid var(--ink);
+  border-radius: var(--r-lg);
+  padding: 20px 24px;
+}
+.quiz-complete-copy {
+  flex: 1;
+  min-width: 240px;
+}
+
+.lesson-refs h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lesson-refs h4 svg {
+  width: 18px;
+  height: 18px;
+}
+.lesson-refs ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.lesson-pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ---------- GLOSSARY PAGE ---------- */
+.glossary-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+.glossary-search {
+  flex: 1 1 280px;
+}
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+.glossary-card {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.glossary-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.glossary-th {
+  font-family: var(--f-head);
+  font-weight: 600;
+  color: var(--coral);
+  margin: 0 0 4px;
+}
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+  border-top: 2px solid var(--ink);
+  background: var(--paper-2);
+  padding: 32px 0;
+  margin-top: 40px;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ---------- RESPONSIVE BREAKPOINTS ---------- */
+@media (max-width: 1120px) {
+  .explore-shell {
+    grid-template-columns: 240px 1fr;
+  }
+  .explore-info {
+    grid-column: 1 / -1;
+    position: static;
+    max-height: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .home-tools-bento {
+    grid-template-columns: 1fr;
+  }
+  .explore-shell {
+    grid-template-columns: 1fr;
+  }
+  .explore-tree {
+    position: static;
+    max-height: 260px;
+  }
+  .explore-stage {
+    min-height: 460px;
+  }
+  .explore-viewport {
+    min-height: 360px;
+  }
+  .lesson-article {
+    padding: 20px 18px;
+  }
+}
